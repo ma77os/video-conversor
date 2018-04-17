@@ -1,3 +1,3 @@
 #!/bin/bash
-chmod +x video-conversor
-sudo cp -i video-conversor /usr/local/bin
+sudo curl https://raw.githubusercontent.com/ma77os/video-conversor/master/video-conversor > /usr/local/bin/video-conversor
+sudo chmod +x /usr/local/bin/video-conversor
