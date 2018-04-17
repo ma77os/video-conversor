@@ -8,7 +8,7 @@
 
 # TODO: 
 # - validade parameters before start
-# - watch subfolders and build same structure on ./output
+# - watch subfolders recursively
 
 usage(){
 
@@ -72,7 +72,7 @@ if [ $output_format == "all" ] || [ $output_format == "mp4" ]; then
         # h264 pass 1
         yes | ffmpeg -y -i "$i" -c:v libx264 -pix_fmt yuv420p -b:v $bitrate -pass 1 -f mp4 /dev/null && \
         # h264 pass 2
-        yes | ffmpeg -i "$i" -c:v libx264 -pix_fmt yuv420p $audio_option -b:v $bitrate -pass 2 "${i%.*}.mp4"
+        yes | ffmpeg -i "$i" -c:v libx264 -pix_fmt yuv420p $audio_option -b:v $bitrate -pass 2 "${i%.*}_converted.mp4"
     done
 
 fi
@@ -84,7 +84,7 @@ if [ $output_format == "all" ] || [ $output_format == "webm" ]; then
         # webm pass 1
         yes | ffmpeg -i "$i" -c:v libvpx-vp9 -b:v $bitrate -pass 1 -speed 4 -f webm /dev/null && \
         # webm pass 2
-        yes | ffmpeg -i "$i" -c:v libvpx-vp9 -b:v $bitrate -pass 2 -speed 1 "${i%.*}.webm"
+        yes | ffmpeg -i "$i" -c:v libvpx-vp9 -b:v $bitrate -pass 2 -speed 1 "${i%.*}_converted.webm"
         
     done
 
