@@ -2,8 +2,6 @@
 
 # TODO: 
 # - validade parameters before start
-# - add command to PATH, installing globally?
-# - deal with necessity of chmod 777
 # - watch subfolders and build same structure on ./output
 
 # MOV files to MP4 and WEBM conversion with variable bitrate (VBR 3000k) with 2 passes
