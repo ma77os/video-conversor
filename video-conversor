@@ -1,13 +1,13 @@
 #!/bin/bash
 
+# Converts video files to MP4 and WEBM with 2 passes variable bitrate using FFmpeg
+# MP4 conversion is H264 quicktime compatible
+# - docs: https://trac.ffmpeg.org/wiki/Encode/VP9 / https://trac.ffmpeg.org/wiki/Encode/H.264
+# - author: @ma77os - André Mattos
+
 # TODO: 
 # - validade parameters before start
 # - watch subfolders and build same structure on ./output
-
-# MOV files to MP4 and WEBM conversion with variable bitrate (VBR 3000k) with 2 passes
-# MP4 converion is H264 quicktime compatible
-# docs: https://trac.ffmpeg.org/wiki/Encode/VP9 / https://trac.ffmpeg.org/wiki/Encode/H.264
-# author: @ma77os - André Mattos
 
 usage(){
 
