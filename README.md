@@ -1,9 +1,7 @@
 # Video Conversor
 Converts video files to MP4 and WEBM with 2 passes variable bitrate using FFmpeg
-
-*MP4 conversion is H264 quicktime compatible*
+- (MP4 conversion is H264 quicktime compatible)
 - docs: https://trac.ffmpeg.org/wiki/Encode/VP9 / https://trac.ffmpeg.org/wiki/Encode/H.264
-- author: @ma77os - André Mattos
 
 # Installation
 Run the following command on Terminal:
