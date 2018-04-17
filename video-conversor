@@ -9,6 +9,9 @@
 # TODO: 
 # - validade parameters before start
 # - watch subfolders recursively
+# - add FPS parameter
+# - add JPG or PNG output parameter
+# - add dimension parameter
 
 usage(){
 
