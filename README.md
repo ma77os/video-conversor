@@ -14,15 +14,15 @@ $ source <(curl -s https://raw.githubusercontent.com/ma77os/video-conversor/mast
 ```
 $ video-conversor
 ```
-- Converts all MOV files to MP4 and WEBM with bitrate of 2MB:
+- Specify desired bitrate using parameter "-b 0000k". In the following example, converts all MOV files to MP4 and WEBM using bitrate of 2MB:
 ```
 $ video-conversor -b 2000k
 ```
-- Converts all MP4 files to WEBM only:
+- Specify an input format using "-i format" and output format using "-o format". Here, converts all MP4 files to WEBM:
 ```
 $ video-conversor -i mp4 -o webm
 ```
-- Converts all MP4 files to MP4 only **without audio**:
+- If you want to remove audio, pass parameter "-a". Here, converts all MP4 files to MP4 **without audio**:
 ```
 $ video-conversor -a -i mp4 -o mp4
 ```
