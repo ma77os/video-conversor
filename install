@@ -1,3 +1,4 @@
 #!/bin/bash
 sudo curl -fsSL https://raw.githubusercontent.com/ma77os/video-conversor/master/video-conversor > /usr/local/bin/video-conversor
 sudo chmod +x /usr/local/bin/video-conversor
+echo "video-conversor was installed successfully!"
