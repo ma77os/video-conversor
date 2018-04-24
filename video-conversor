@@ -42,7 +42,7 @@ output_format='all'
 # check parameters
 while getopts ab:i:o:h PARAM; do
     case "${PARAM}" in
-    a) audio_option='-a:n' ;;
+    a) audio_option='-an' ;;
     b) bitrate="${OPTARG}" ;;
     i) input_format="${OPTARG}" ;;
     o) output_format="${OPTARG}" ;;
@@ -71,7 +71,7 @@ if ! [ -x "$(command -v ffmpeg)" ]; then
     --with-x265
 fi
 
-# convert input files to MP4 to subfolder ./output
+# convert input files to MP4
 if [ $output_format == "all" ] || [ $output_format == "mp4" ]; then
 
     for i in ./*.$input_format; do 
@@ -84,10 +84,10 @@ if [ $output_format == "all" ] || [ $output_format == "mp4" ]; then
 
 fi
 
-# convert MP4 to WEBM
+# convert MP4_converted to WEBM
 if [ $output_format == "all" ] || [ $output_format == "webm" ]; then
 
-    for i in ./*.mp4; do 
+    for i in ./*_converted.mp4; do 
         # webm pass 1
         yes | ffmpeg -i "$i" -c:v libvpx-vp9 -b:v $bitrate -pass 1 -speed 4 -f webm /dev/null && \
         # webm pass 2
