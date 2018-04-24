@@ -6,9 +6,6 @@
 # - author: @ma77os - André Mattos
 # - https://github.com/ma77os/video-conversor
 
-# BUGS:
-# - reconverts mp4 twice
-
 # TODO: 
 # - validade parameters before start
 # - watch subfolders recursively
@@ -38,6 +35,7 @@ audio_option=''
 bitrate='3000k'
 input_format='mov'
 output_format='all'
+str_converted=''
 
 # check parameters
 while getopts ab:i:o:h PARAM; do
@@ -74,6 +72,8 @@ fi
 # convert input files to MP4
 if [ $output_format == "all" ] || [ $output_format == "mp4" ]; then
 
+    str_converted='_converted'
+
     for i in ./*.$input_format; do 
         # (command yes to avoid overwrite prompts)
         # h264 pass 1
@@ -87,11 +87,11 @@ fi
 # convert MP4_converted to WEBM
 if [ $output_format == "all" ] || [ $output_format == "webm" ]; then
 
-    for i in ./*_converted.mp4; do 
+    for i in ./*$str_converted.mp4; do 
         # webm pass 1
         yes | ffmpeg -i "$i" -c:v libvpx-vp9 -b:v $bitrate -pass 1 -speed 4 -f webm /dev/null && \
         # webm pass 2
-        yes | ffmpeg -i "$i" -c:v libvpx-vp9 -b:v $bitrate -pass 2 -speed 1 "${i%.*}_converted.webm"
+        yes | ffmpeg -i "$i" -c:v libvpx-vp9 -b:v $bitrate -pass 2 -speed 1 "${i%.*}.webm"
         
     done
 
