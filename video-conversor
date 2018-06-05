@@ -36,6 +36,15 @@ bitrate='3000k'
 input_format='mov'
 output_format='all'
 str_converted=''
+platform='unknown'
+unamestr=`uname`
+
+# check platform
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='darvin'
+fi
 
 # check parameters
 while getopts ab:i:o:h PARAM; do
@@ -50,13 +59,13 @@ done
 
 
 # check if Homebrew is installed, if not, abort
-if ! [ -x "$(command -v brew)" ]; then
+if [ $platform == 'darvin' ]  && ! [ -x "$(command -v brew)" ]; then
     echo "Homebrew is not installed, please go to https://brew.sh/"
     exit 1
 fi
 
 # install ffmpeg first via Homebrew if doesn't exists
-if ! [ -x "$(command -v ffmpeg)" ]; then
+if [ $platform == 'darvin' ]  &&  ! [ -x "$(command -v ffmpeg)" ]; then
   brew install ffmpeg \
     --with-tools \
     --with-fdk-aac \
@@ -67,6 +76,10 @@ if ! [ -x "$(command -v ffmpeg)" ]; then
     --with-libvpx \
     --with-opus \
     --with-x265
+fi
+
+if [ $platform == 'linux' ]  &&  ! [ -x "$(command -v ffmpeg)" ]; then
+    sudo apt-get install ffmpeg
 fi
 
 # convert input files to MP4
